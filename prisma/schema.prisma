@@ -14,4 +14,46 @@ datasource db {
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
-        
+
+enum VendorType {
+  provider
+  consumer
+}
+
+model Vendors {
+  vendorId String @id @default(uuid())
+  name String 
+  address String @db.Text
+  gstNo String
+  Type VendorType 
+}    
+
+model Goods {
+  goodsId String @id @default(uuid())
+  name String 
+}
+
+model AuthTable {
+  id String @id @default(uuid())
+  name String
+  userName String 
+  password String
+}
+
+// model MoneyTranaction {
+//   transId String @id @default(uuid())
+//   sender Vendors or AuthTable 
+//   reciever Vendors
+//   Amaount 
+//   Date 
+//   goodsTrans
+//   
+// }
+
+// model GoodsTranaction {
+
+// }
+
+// model Inventory {
+
+// }
